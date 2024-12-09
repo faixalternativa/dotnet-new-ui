@@ -7,7 +7,7 @@ var configuration =
 
 var artefactsDirectory = Directory("./Artefacts");
 var frontendDirectory = GetDirectories("Source/DotnetNewUI/Frontend").First();
-var frontendDistDirectory = GetDirectories("Source/DotnetNewUI/Frontend/dist").FirstOrDefault();
+var frontendDistDirectory = GetDirectories("Source/DotnetNewUI/Frontend/build").FirstOrDefault();
 
 Task("Clean")
     .Description("Cleans the artefacts, bin and obj directories.")
