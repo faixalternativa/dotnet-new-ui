@@ -39,7 +39,8 @@ function DeleteCacheFolders{
         }
         foreach($tn in $toolNames){
             'DeleteCacheFolders, tn="{0}"' -f $tn | Write-Output
-            $cacheFolder = Join-Path $toolsFolderPath .store $tn
+            $cacheFolder = Join-Path $toolsFolderPath .store
+            $cacheFolder = Join-Path $cacheFolder $tn
             ' cacheFolder: "{0}"' -f $cacheFolder | Write-Output
             if(Test-Path $cacheFolder -PathType Container){
                 Remove-Item -LiteralPath $cacheFolder -Recurse -Force

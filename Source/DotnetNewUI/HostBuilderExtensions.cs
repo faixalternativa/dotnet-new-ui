@@ -100,8 +100,9 @@ public static class HostBuilderExtensions
             var distDirectory = directories
                 .Where(x => !x.FullName.Contains("node_modules") &&
                     !x.FullName.Contains("obj") &&
-                    x.FullName.EndsWith(@"\Frontend\dist", StringComparison.Ordinal))
+                    x.FullName.EndsWith(@"\Frontend\build", StringComparison.Ordinal))
                 .FirstOrDefault();
+            Console.WriteLine($"DIST: {distDirectory}");
             if (distDirectory is not null)
             {
                 if (IsLoggingEnabled)
@@ -112,7 +113,7 @@ public static class HostBuilderExtensions
                 return distDirectory.FullName;
             }
 
-            throw new DirectoryNotFoundException($"Unable to find Frontend/dist directory under {currentDirectory}");
+            throw new DirectoryNotFoundException($"Unable to find Frontend/build directory under {currentDirectory}");
         }
         catch (UnauthorizedAccessException)
         {
